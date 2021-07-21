@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BGMI Customs</string>
+    <string name="next_event_header">Next Event</string>
+    <string name="news_header">Latest News</string>
+    <string name="previous_winner_header">Last Event Winners</string>
+    <string name="register_button_text">Register</string>
+    <string name="enter_teammates_names" formatted="false">Enter teammates\' names</string>
+    <string name="image_desc">none</string>
+    <string name="teammate_1">1.</string>
+    <string name="teammate_2">2.</string>
+    <string name="teammate_2_hint">Player 2</string>
+    <string name="teammate_1_hint">Player 1</string>
+    <string name="teammate_3">3.</string>
+    <string name="teammate_3_hint">Player 3</string>
+    <string name="teammate_4">4.</string>
+    <string name="teammate_4_hint">Player 4</string>
+    <string name="team_submit_button_text">Submit</string>
+    <string name="slot_full_text">Slots are full!</string>
+    <string name="allotted_slot_text">Allotted slot to your team: %1$s</string>
+    <string name="room_credentials_heading">Room Credentials</string>
+    <string name="no_events_message">No events for now!</string>
+</resources>
