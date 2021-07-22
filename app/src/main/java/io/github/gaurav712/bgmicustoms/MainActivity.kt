@@ -1,5 +1,6 @@
 package io.github.gaurav712.bgmicustoms
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings.Secure
 import android.util.Log
@@ -14,6 +15,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.security.MessageDigest
 import kotlin.experimental.and
+
+const val EXTRA_MESSAGE = "io.github.gaurav712.bgmicustoms.MESSAGE"
 
 class MainActivity : AppCompatActivity() {
 
@@ -184,4 +187,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private class Team(val playerOne: String, val playerTwo: String, val playerThree: String, val playerFour: String)
+
+    fun showCurrentLineup(view: View) {
+
+        Log.d("lineupActivity", "launching lineup activity")
+
+        /* Get the lineup and launch the LineupActivity */
+        databaseReference.child("lineup").get().addOnSuccessListener {
+            val intent = Intent(this, LineupActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, it.value.toString())
+            }
+
+            startActivity(intent)
+        }
+    }
 }

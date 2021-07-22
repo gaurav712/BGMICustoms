@@ -19,4 +19,5 @@
     <string name="allotted_slot_text">Slot allotted to your team: %1$s</string>
     <string name="room_credentials_heading">Room Credentials</string>
     <string name="no_events_message">No events for now!</string>
+    <string name="lineup_text">Lineup</string>
 </resources>
