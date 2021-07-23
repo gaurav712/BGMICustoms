@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.firebase.database.DatabaseReference
@@ -143,25 +144,40 @@ class MainActivity : AppCompatActivity() {
 
     fun addTeamToLineup(view: View) {
 
-        /* Upload the team data to cloud */
-        val team = Team(
-            playerOneEditText.text.toString(),
-            playerTwoEditText.text.toString(),
-            playerThreeEditText.text.toString(),
-            playerFourEditText.text.toString())
+        /* Check if any of the entries are empty */
+        val playerOneName = playerOneEditText.text.toString().trim()
+        val playerTwoName = playerTwoEditText.text.toString().trim()
+        val playerThreeName = playerThreeEditText.text.toString().trim()
+        val playerFourName = playerFourEditText.text.toString().trim()
 
-        Log.d("dataToWrite", deviceId + team.playerOne + team.playerTwo + team.playerThree + team.playerFour + currentSlot)
+        if (playerOneName.isEmpty() or playerTwoName.isEmpty() or playerThreeName.isEmpty() or playerFourName.isEmpty()) {
+            Toast.makeText(this, "Teammate names cannot be empty!", Toast.LENGTH_LONG).show()
+        } else {
 
-        currentSlot = (currentSlot.toInt() + 1).toString()
-        databaseReference.child("lineup").child(deviceId).setValue(team)
-        databaseReference.child("lineup").child(deviceId).child("slot").setValue(currentSlot)
-        updateCurrentSlotMessage()
+            /* Upload the team data to cloud */
+            val team = Team(
+                playerOneName,
+                playerTwoName,
+                playerThreeName,
+                playerFourName
+            )
 
-        /* Now update the currentSlot value */
-        databaseReference.child("current_slot").setValue(currentSlot)
+            Log.d(
+                "dataToWrite",
+                deviceId + team.playerOne + team.playerTwo + team.playerThree + team.playerFour + currentSlot
+            )
 
-        /* Now make the layout disappear */
-        registrationLayout.visibility = View.GONE
+            currentSlot = (currentSlot.toInt() + 1).toString()
+            databaseReference.child("lineup").child(deviceId).setValue(team)
+            databaseReference.child("lineup").child(deviceId).child("slot").setValue(currentSlot)
+            updateCurrentSlotMessage()
+
+            /* Now update the currentSlot value */
+            databaseReference.child("current_slot").setValue(currentSlot)
+
+            /* Now make the layout disappear */
+            registrationLayout.visibility = View.GONE
+        }
     }
 
     private fun updateCurrentSlotMessage(allottedSlot: String = currentSlot) {
