@@ -167,13 +167,12 @@ class MainActivity : AppCompatActivity() {
                 deviceId + team.playerOne + team.playerTwo + team.playerThree + team.playerFour + currentSlot
             )
 
-            currentSlot = (currentSlot.toInt() + 1).toString()
             databaseReference.child("lineup").child(deviceId).setValue(team)
             databaseReference.child("lineup").child(deviceId).child("slot").setValue(currentSlot)
             updateCurrentSlotMessage()
 
             /* Now update the currentSlot value */
-            databaseReference.child("current_slot").setValue(currentSlot)
+            databaseReference.child("current_slot").setValue((currentSlot.toInt() + 1).toString())
 
             /* Now make the layout disappear */
             registrationLayout.visibility = View.GONE
