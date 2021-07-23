@@ -16,11 +16,10 @@ import com.google.firebase.ktx.Firebase
 import java.security.MessageDigest
 import kotlin.experimental.and
 
-const val EXTRA_MESSAGE = "io.github.gaurav712.bgmicustoms.MESSAGE"
+lateinit var databaseReference: DatabaseReference
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var databaseReference: DatabaseReference
     private lateinit var nextEventNotifierTextView: TextView
     private lateinit var newsTextView: TextView
     private lateinit var previousWinnerTextView: TextView
@@ -192,13 +191,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("lineupActivity", "launching lineup activity")
 
-        /* Get the lineup and launch the LineupActivity */
-        databaseReference.child("lineup").get().addOnSuccessListener {
-            val intent = Intent(this, LineupActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, it.value.toString())
-            }
-
-            startActivity(intent)
-        }
+        /* Launch the LineupActivity */
+        val intent = Intent(this, LineupActivity::class.java)
+        startActivity(intent)
     }
 }

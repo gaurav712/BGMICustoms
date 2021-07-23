@@ -13,7 +13,8 @@ class LineupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lineup)
 
         textView = findViewById(R.id.textView)
-
-        textView.text = intent.getStringExtra(EXTRA_MESSAGE)
+        databaseReference.child("lineup").get().addOnSuccessListener {
+            textView.text = it.value.toString()
+        }
     }
 }
