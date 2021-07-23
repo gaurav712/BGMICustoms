@@ -152,8 +152,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("dataToWrite", deviceId + team.playerOne + team.playerTwo + team.playerThree + team.playerFour + currentSlot)
 
-        databaseReference.child("lineup").child(deviceId).setValue(team)
         currentSlot = (currentSlot.toInt() + 1).toString()
+        databaseReference.child("lineup").child(deviceId).setValue(team)
         databaseReference.child("lineup").child(deviceId).child("slot").setValue(currentSlot)
         updateCurrentSlotMessage()
 

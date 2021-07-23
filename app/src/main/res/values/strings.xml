@@ -20,5 +20,5 @@
     <string name="room_credentials_heading">Room Credentials</string>
     <string name="no_events_message">No events for now!</string>
     <string name="lineup_text">Lineup</string>
-    <string name="slot_number_text">Slot %2$d</string>
+    <string name="slot_number_text">Slot %1$s</string>
 </resources>
