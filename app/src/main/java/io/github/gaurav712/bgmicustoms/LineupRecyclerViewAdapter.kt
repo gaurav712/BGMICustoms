@@ -21,7 +21,8 @@ class LineupRecyclerViewAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: LineupRecyclerViewHolder, position: Int) {
-        val jsonObject: JSONObject = jsonObject[jsonArray[position].toString()] as JSONObject
+//        val jsonObject: JSONObject = jsonObject[jsonArray[position].toString()] as JSONObject
+        val jsonObject: JSONObject = lineup[position]!!
 
         holder.slotNumberTextView.text =
             String.format(context.resources.getString(R.string.slot_number_text), jsonObject.getString("slot"))

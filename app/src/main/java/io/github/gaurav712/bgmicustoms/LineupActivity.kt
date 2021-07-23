@@ -40,8 +40,13 @@ class LineupActivity : AppCompatActivity() {
                 jsonArray = jsonObject.names()!!
 
                 for (num in 0 until jsonObject.length()) {
-                    Log.d("name", jsonObject.getJSONObject(jsonArray[num].toString()).toString())
-                    lineup[num] = jsonObject.getJSONObject(jsonArray[num].toString())
+
+                    /* Get slot number to calculate index */
+                    val currentObject = jsonObject.getJSONObject(jsonArray[num].toString())
+                    val index = currentObject.getString("slot").toInt() - 2
+
+                    lineup[index] = currentObject
+                    Log.d("name", "$currentObject.toString()$index")
                 }
 
                 /* Now load it all up in the RecyclerView */
